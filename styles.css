@@ -1,0 +1,59 @@
+html{
+    background: url("images/fondo.jpg");
+    background-size: cover;
+}
+
+h1, p, span, div{
+    text-align: center;
+}
+
+#nowPlaying{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#board{
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.image{
+    width: 150px;
+
+    border-radius: 20px;
+    border: 1px solid black;
+    margin: 30px;
+}
+
+.cardBox {
+    
+    position: relative;
+    perspective: 1000px;
+  }
+
+.card {
+    transform-style: preserve-3d;
+    transition: all 0.5s linear;
+}
+
+.cardFront {
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    position: absolute;
+    
+  }
+
+.cardBack {
+    backface-visibility: hidden;
+}
