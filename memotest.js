@@ -1,6 +1,15 @@
 function startGame(){
-    mixCards()
 
+    document.getElementById("playerName").innerHTML = prompt("Empieza el juego! Como te llamas?", "Pepe Honguito")
+    document.getElementById("board").style.display = "flex"
+    document.getElementById("startGameButton").innerHTML = "Reiniciar juego"
+    document.getElementById("startGameButton").setAttribute("onclick", "reStartGame()")
+
+    mixCards()
+    
+}
+
+function reStartGame(){
     score = 0
     misses = 0
 
@@ -12,12 +21,35 @@ function startGame(){
         picks.splice(0, picks.length)
     }
 
+    for(let i = 0; i < cards.length; i++){
+        turnBack("card" + (i + 1))
+    }
+
     document.getElementById("playerName").innerHTML = prompt("Empieza el juego! Como te llamas?", "Pepe Honguito")
-    document.getElementById("board").style.display = "flex"
+
+    setTimeout( () =>{
+        mixCards()
+    }, 500)
 }
+
 
 let score = 0
 let misses = 0
+
+let cards = [
+    "images/elefante.png",
+    "images/elefante.png",
+    "images/jirafa.png",
+    "images/jirafa.png",
+    "images/perro.png",
+    "images/perro.png",
+    "images/ciervo.png",
+    "images/ciervo.png",
+    "images/ardilla.png",
+    "images/ardilla.png",
+    "images/mono.png",
+    "images/mono.png"
+    ]
 
 function getRandomNumber(min, max){
     return Math.floor(Math.random() * (max - min) + min)
@@ -25,23 +57,7 @@ function getRandomNumber(min, max){
 
 function mixCards(){
 
-    let cards = [
-        "images/elefante.png",
-        "images/elefante.png",
-        "images/jirafa.png",
-        "images/jirafa.png",
-        "images/perro.png",
-        "images/perro.png",
-        "images/ciervo.png",
-        "images/ciervo.png",
-        "images/ardilla.png",
-        "images/ardilla.png",
-        "images/mono.png",
-        "images/mono.png"
-        ]
-
     for(let i = 0; i <= cards.length - 1; i++){
-        turnBack("card" + (i + 1))
         let indexNumber = getRandomNumber(0, 12)
         let temp = cards[i]
         cards[i] = cards[indexNumber]
@@ -51,6 +67,7 @@ function mixCards(){
     for(let i = 0; i <= cards.length - 1; i++){
         document.getElementById("cardFront" + (i + 1)).innerHTML = '<img src="' + cards[i] + '" class="image" />'
         document.getElementById("cardBack" + (i + 1)).innerHTML = '<img src="images/carta.png" onclick="pickCards(' + (i + 1) +')" class="image" />'
+        
     }
 
 }
