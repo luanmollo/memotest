@@ -104,6 +104,7 @@ function comparePicks(pick1, pick2){
         
         score +=1
         document.getElementById("score").innerHTML = score
+        
     }
     else{
         setTimeout(() => {
